@@ -41,3 +41,7 @@ class TestPyPiVersionManagement(unittest.TestCase):
     def test_latest_versions(self):
         self.assertEqual(Version("0.1.8"), get_latest_version("opencmiss.utils"))
         self.assertEqual(Version("0.0.0"), get_latest_version("opencmiss.zinc"))
+
+    def test_test_pypi(self):
+        captured_versions = _capture_versions("opencmiss.utils", True)
+        self.assertIn(Version("0.1.10"), captured_versions)
